@@ -19,14 +19,18 @@
   </div>
   <div class="col" style="padding:30px;">
     <h4>SCAN RESULT</h4>
-    <div id="result">Result Here</div>
+    <div>
+      <div>Result Here</div>
+      <div id="result"></div>
+    </div>
+    
   </div>
 </div>
 
 <script type="text/javascript">
   function onScanSuccess(decodedText, decodedResult) {
     // handle the scanned code as you like, for example:
-    console.log(`Code matched = ${decodedText}`, decodedResult);
+    $('#result').text(`Code matched = ${decodedText}`, decodedResult);
 }
 
 function onScanFailure(error) {

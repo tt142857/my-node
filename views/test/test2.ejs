@@ -1,6 +1,6 @@
 <%- include('../grid/top') %>
 
-<script src="/public/dist/js/html5-qrcode.min.js"></script>
+<script src="/public/dist/js/html5-qrcode.js"></script>
 
 <style>
   .result{
@@ -51,19 +51,33 @@ var formats = [
 
 const READER_WIDTH = $('#reader').width();
 const SCANNER_SIZE = Math.round(READER_WIDTH / 3);
-let html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader",
-    {
-        fps: 244,
-        qrbox: {width: SCANNER_SIZE, height: SCANNER_SIZE},
-        formatsToSupport: formats,
-        focusMode: "continuous", 
-        advanced:[{zoom: 4.0}]
-    },
-    false
-);
+// let html5QrcodeScanner = new Html5QrcodeScanner(
+//     "reader",
+//     {
+//         fps: 244,
+//         qrbox: {width: SCANNER_SIZE, height: SCANNER_SIZE},
+//         formatsToSupport: formats,
+//         supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
+//         focusMode: "continuous", 
+//         advanced:[{zoom: 4.0}],
+//     },
+//     false
+// );
 
-html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+// html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+const html5QrCode = new Html5Qrcode("reader");
+const config = {
+    fps: 244,
+    qrbox: {width: SCANNER_SIZE, height: SCANNER_SIZE},
+    formatsToSupport: formats,
+    supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
+    focusMode: "continuous", 
+    advanced:[{zoom: 4.0}],
+};
+
+html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess);
+
 </script>
 
 <%- include('../grid/footer') %>

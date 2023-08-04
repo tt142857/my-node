@@ -2,9 +2,17 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', async function(req, res) {
+router.get('/1', async function(req, res) {
   try {
-    res.render('test/test.ejs');
+    res.render('test/test1.ejs');
+  } catch(err) {
+    console.log(`Error: ${err}`);
+  }
+});
+
+router.get('/2', async function(req, res) {
+  try {
+    res.render('test/test2.ejs');
   } catch(err) {
     console.log(`Error: ${err}`);
   }

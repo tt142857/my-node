@@ -45,15 +45,13 @@ let html5QrcodeScanner = new Html5QrcodeScanner(
     "reader",
     {
         fps: 244,
-        qrbox: {width: 150, height: 250},
+        qrbox: {width: 300, height: 200},
         formatsToSupport: formats,
-        showTorchButtonIfSupported: true
     },
     false
 );
 
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
-// console.log(html5QrcodeScanner.showTorchButtonIfSupported);
 </script>
 
 <%- include('../grid/footer') %>

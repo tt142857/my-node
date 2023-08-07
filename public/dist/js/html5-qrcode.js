@@ -18698,6 +18698,8 @@ var __Html5QrcodeLibrary__;
           var r = this;
           (this.lastMatchFound = null),
             (this.qrCodeSuccessCallback = function (e, n) {
+              console.log(e);
+              console.log(n);
               if (t) t(e, n);
               else {
                 if (r.lastMatchFound === e) return;

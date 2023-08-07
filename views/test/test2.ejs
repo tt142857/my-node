@@ -3,7 +3,7 @@
 <script src="/public/dist/js/html5-qrcode.min.js"></script>
 
 <style>
-  .result{
+  .resultDiv{
     background-color: green;
     color:#fff;
     padding:20px;
@@ -20,49 +20,34 @@
 <div class="row">
   <div id="reader"></div>
 </div>
-<div class="row" style="padding:30px;">
-  <h4>SCAN RESULT</h4>
-  <div>
-    <div>Result Here</div>
-    <div id="result"></div>
-  </div>
-  
-</div>
 
 <script type="text/javascript">
+
   function onScanSuccess(decodedText, decodedResult) {
-    // handle the scanned code as you like, for example:
-    $('#result').text(`Code matched = ${decodedText}`, decodedResult);
     alert(`확인된 코드 : ${decodedText}`);
-}
+  }
 
-function onScanFailure(error) {
-    // handle scan failure, usually better to ignore and keep scanning.
-    // for example:
-    // console.warn(`Code scan error = ${error}`);
-}
-
-var formats = [ 
+  var formats = [ 
     Html5QrcodeSupportedFormats.QR_CODE, 
     Html5QrcodeSupportedFormats.CODE_39, 
     Html5QrcodeSupportedFormats.CODE_93, 
     Html5QrcodeSupportedFormats.CODE_128
-];
+  ];
 
-const READER_WIDTH = $('#reader').width();
-const SCANNER_SIZE = Math.round(READER_WIDTH / 3);
+  const READER_WIDTH = $('#reader').width();
+  const SCANNER_SIZE = Math.round(READER_WIDTH / 3);
 
-const html5QrCode = new Html5Qrcode("reader");
-const config = {
+  const html5QrCode = new Html5Qrcode("reader");
+  const config = {
     fps: 244,
     qrbox: {width: SCANNER_SIZE, height: SCANNER_SIZE},
     formatsToSupport: formats,
     supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
     focusMode: "continuous", 
     advanced:[{zoom: 4.0}],
-};
+  };
 
-html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess);
+  html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess);
 
 </script>
 

@@ -34,16 +34,17 @@
     Html5QrcodeSupportedFormats.CODE_128
   ];
 
-  const READER_WIDTH = $('#reader').width();
-  const SCANNER_SIZE = Math.round(READER_WIDTH / 3);
+  const READER_WIDTH = Math.round(screen.width);
+  const SCANNER_WIDTH = Math.round(READER_WIDTH / 2);
+  const SCANNER_HEIGHT = Math.round(READER_WIDTH / 3);
 
   const html5QrCode = new Html5Qrcode("reader");
   const config = {
-    fps: 244,
-    qrbox: {width: SCANNER_SIZE, height: SCANNER_SIZE},
+    fps: 15,
+    qrbox: {width: SCANNER_WIDTH, height: SCANNER_HEIGHT},
     formatsToSupport: formats,
     supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-    focusMode: "continuous", 
+    focusMode: "manual", 
     advanced:[{zoom: 4.0}],
   };
 

@@ -18,4 +18,12 @@ router.get('/2', async function(req, res) {
   }
 });
 
+router.get('/3', async function(req, res) {
+  try {
+    res.render('test/test3.ejs');
+  } catch(err) {
+    console.log(`Error: ${err}`);
+  }
+});
+
 module.exports = router;

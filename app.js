@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const http = require('http');
 const https = require('https');
 
 const app = express();
@@ -9,7 +10,8 @@ const ca = fs.readFileSync(keys_dir + 'ca_bundle.crt');
 const key = fs.readFileSync(keys_dir + 'private.key');
 const cert = fs.readFileSync(keys_dir + 'certificate.crt');
 const options = {key, cert, ca};
-const server = https.createServer(options, app);
+// const server = https.createServer(options, app);
+const server = http.createServer(app);
 
 
 app.set('port', 80 || 443);
